@@ -1,7 +1,7 @@
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 
-weather = InlineKeyboardButton('Узнать погоду', callback_data='weather')
-exchange_course = InlineKeyboardButton('Конвертировать валюту', callback_data='currency_converter')
+weather = InlineKeyboardButton('Get temperature', callback_data='weather')
+exchange_course = InlineKeyboardButton('Currency converter', callback_data='currency_converter')
 
-command_start_keyboard = InlineKeyboardMarkup().add(weather, exchange_course)
+command_start_keyboard = InlineKeyboardMarkup(row_width=1).add(weather, exchange_course)
