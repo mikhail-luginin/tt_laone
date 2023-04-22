@@ -26,5 +26,11 @@ async def command_start(message: types.Message):
                            reply_markup=command_start_keyboard)
 
 
+@dp.message_handler(commands=['get_chat_id'])
+async def command_get_chat_id(message: types.Message):
+    chat_id = message.chat.id
+    await bot.send_message(chat_id, f'Current chat id: {chat_id}')
+
+
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True, on_startup=__on_start_up)
