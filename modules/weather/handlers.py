@@ -20,7 +20,7 @@ async def city(message: types.Message, state: FSMContext):
 
 def register_weather_handlers(dispatcher: Dispatcher) -> None:
     callback_query_handlers = [
-        weather
+        dict(callback=weather, text='weather')
     ]
 
     state_handlers = [
@@ -28,7 +28,7 @@ def register_weather_handlers(dispatcher: Dispatcher) -> None:
     ]
 
     for handler in callback_query_handlers:
-        dispatcher.register_callback_query_handler(handler)
+        dispatcher.register_callback_query_handler(**handler)
 
     for handler in state_handlers:
         dispatcher.register_message_handler(**handler)
