@@ -1,4 +1,6 @@
 venv
-.env
 logs
 .idea
+.env
+!/modules/admin/admins.txt
+!/modules/random_images/photo_urls.txt
