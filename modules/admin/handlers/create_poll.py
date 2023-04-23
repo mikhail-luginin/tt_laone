@@ -2,8 +2,10 @@ from aiogram import types
 from aiogram.dispatcher import FSMContext
 
 from .. import states, keyboards, services
+from ..decorators import check_admin
 
 
+@check_admin
 async def create_poll_command_handler(message: types.Message):
     """
     This handler called after command /create_poll and used for start PollCreatingState.

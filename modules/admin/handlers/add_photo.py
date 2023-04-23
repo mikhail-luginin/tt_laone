@@ -1,9 +1,11 @@
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 
-from .. import validators, states, decorators
+from .. import validators, states
+from ..decorators import check_admin
 
 
+@check_admin
 async def add_photo_command_handler(message: types.Message):
     """
     This handler called after command /add_photo and used for start AddPhotoState.
@@ -18,7 +20,6 @@ async def add_photo_command_handler(message: types.Message):
     await states.AddPhotoState.add_photo.set()
 
 
-@decorators.check_admin
 async def add_photo_state_handler(message: types.Message, state: FSMContext):
     """
     This handler used for add photo url to photo urls list.

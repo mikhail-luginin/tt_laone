@@ -1,10 +1,11 @@
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 
-from .. import validators, states, decorators
+from .. import validators, states
+from .. decorators import check_admin
 
 
-@decorators.check_admin
+@check_admin
 async def add_admin_command_handler(message: types.Message):
     """
     This handler called after command /add_admin and used for start AddAdminState.
