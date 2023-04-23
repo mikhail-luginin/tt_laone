@@ -34,10 +34,10 @@ async def command_get_chat_id(message: types.Message):
     await bot.send_message(chat_id, f'Current chat id: {chat_id}')
 
 
-@dp.message_handler(commands=['cancel'])
+@dp.message_handler(commands=['cancel'], state='*')
 async def cancel_handler(message: types.Message, state: FSMContext):
     await message.answer(text='You successfully canceled current state :)')
-    await state.finish()
+    await state.reset_state(with_data=False)
 
 
 if __name__ == '__main__':
