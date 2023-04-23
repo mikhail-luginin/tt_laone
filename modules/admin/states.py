@@ -10,8 +10,9 @@ class AddPhotoState(StatesGroup):
 
 
 class PollCreatingState(StatesGroup):
+    chat_id = State()
     question = State()
     is_anonymous = State()
     options = State()
-    explantation = State()
     poll_type = State()
+    correct_option = State()
