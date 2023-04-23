@@ -7,7 +7,7 @@ choose_anonymous_keyboard = InlineKeyboardMarkup(row_width=2).add(ANONYMOUS, NOT
 
 
 REGULAR = InlineKeyboardButton('Regular', callback_data='regular')
-MULTIPLE = InlineKeyboardButton('Multiple questions', callback_data='multiple')
+MULTIPLE = InlineKeyboardButton('Multiple', callback_data='multiple')
 QUIZ = InlineKeyboardButton('Quiz', callback_data='quiz')
 
 choose_question_pool_keyboard = InlineKeyboardMarkup(row_width=3).add(REGULAR, MULTIPLE, QUIZ)
