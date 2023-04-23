@@ -1,7 +1,9 @@
 from aiogram import Bot, Dispatcher, executor, types
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
+from aiogram.dispatcher import FSMContext
 
 import logging
+
 import config
 
 from modules import register_all_handlers
@@ -30,6 +32,12 @@ async def command_start(message: types.Message):
 async def command_get_chat_id(message: types.Message):
     chat_id = message.chat.id
     await bot.send_message(chat_id, f'Current chat id: {chat_id}')
+
+
+@dp.message_handler(commands=['cancel'])
+async def cancel_handler(message: types.Message, state: FSMContext):
+    await message.answer(text='You successfully canceled current state :)')
+    await state.finish()
 
 
 if __name__ == '__main__':
