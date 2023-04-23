@@ -9,8 +9,6 @@ async def currency_converter(current_currency: str, currency_for_convert: str, a
                                                           amount=amount)
     async with aiohttp.ClientSession() as session:
         async with session.get(url, headers=config.CURRENT_EXCHANGE_COURSES_API_HEADERS, ssl=False) as response:
-            response.raise_for_status()
-
             try:
                 json_data = await response.json()
             except json.JSONDecodeError:
@@ -24,10 +22,8 @@ async def currency_converter(current_currency: str, currency_for_convert: str, a
 
             if json_data['success']:
                 result = json_data["result"]
-                result_str = f"""
-                Your current currency: {current_currency}\n
-                Currency for convert: {currency_for_convert}\n
-                Amount: {amount}\n\n
-                Result: {round(result)} (result was rounded, not rounded result: {result})
-                """
-                return result_str
+                result_str = f'Your current currency: {current_currency}\n' \
+                             f'Currency for convert: {currency_for_convert}\n' \
+                             f'Amount: {amount}\n\n' \
+                             f'Result: {round(result)} (result was rounded, not rounded result: {result})'
+                return result_str.strip()
